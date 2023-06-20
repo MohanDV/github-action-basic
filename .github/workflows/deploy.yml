@@ -4,16 +4,15 @@ jobs:
    checkout-code:
      runs-on: ubuntu-latest
      steps:
-	- name: Checkout code 
-	  uses: actions/checkout@v3
-	- name: install dependencies
-          run: npm ci
-	- name: Lint
-	  run: npm run lint
-	- name: Test code
-	  run: npm run test
-	- name: Build code
-	  run: npm build code
-	- name: Deploy the code
-	  run: echo "Deploying the code"
-       
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Test code
+        run: npm run test
+      - name: Build code
+        run: npm build code
+      - name: Deploy the code
+        run: echo "Deploying the code"
