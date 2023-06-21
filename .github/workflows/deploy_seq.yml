@@ -1,0 +1,42 @@
+name: Sequential deploy the project
+on: push
+jobs:
+   lint-code:
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+   test-code:
+     needs: lint-code
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: Test code
+        run: npm run test
+   build-code:
+     needs: test-code
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: Build code
+        run: npm build code
+   deploy-code:
+     needs: build-code
+     runs-on: ubuntu-latest
+     steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: install dependencies
+        run: npm ci
+      - name: Deploy the code
+        run: echo "Deploying the code"
